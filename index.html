@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SALY - Security Advanced Logic Yield</title>
     <style>
       * {
@@ -121,7 +120,9 @@
       }
       .feature-card:hover {
         transform: translateY(-8px);
-        box-shadow: 0 12px 24px rgba(14, 165, 233, 0.25), 0 8px 16px rgba(0, 0, 0, 0.12);
+        box-shadow:
+          0 12px 24px rgba(14, 165, 233, 0.25),
+          0 8px 16px rgba(0, 0, 0, 0.12);
         background: #dbeafe;
       }
       .feature-card span {
@@ -244,7 +245,25 @@
           font-size: 2rem;
         }
       }
-    </style>
+    
+      .hero{display:flex;justify-content:space-between;align-items:center;gap:60px;flex-wrap:wrap;padding:60px 5%;}
+      .hero-left,.hero-right{flex:1;min-width:300px;}
+      .hero-left video{width:100%;max-width:550px;height:auto;border-radius:20px;}
+      .features{flex-wrap:wrap;}
+      .hero-right h2{font-size:clamp(2.5rem,7vw,6rem);}
+      .hero-right h3{font-size:clamp(2rem,5vw,4.5rem);}
+      .hero-right h4{font-size:clamp(1.8rem,4vw,4rem);}
+      .hero-right p{font-size:clamp(1rem,2vw,1.5rem);}
+      @media (max-width:768px){
+        header{padding:20px;}
+        nav{flex-direction:column;gap:20px;}
+        .menu{justify-content:center;flex-wrap:wrap;}
+        .hero{flex-direction:column;text-align:center;padding:40px 20px;}
+        .features{justify-content:center;}
+        #chatBox{width:90%;left:5%;right:5%;}
+      }
+
+</style>
   </head>
   <body>
     <header>
@@ -272,10 +291,13 @@
     </header>
     <section class="hero">
       <div class="hero-left">
-<video autoplay muted loop playsinline>
-    <source src="video/robot-video.mp4" type="video/mp4">
-    Tu navegador no soporta video HTML5.
-</video>
+        <video autoplay muted loop playsinline>
+          <source
+            src="video/robot-video.mp4" type="video/mp4"
+            type="video/mp4"
+          />
+          Tu navegador no soporta video HTML5.
+        </video>
       </div>
       <div class="hero-right">
         <h2>SALY</h2>
