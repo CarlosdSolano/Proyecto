@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SALY - Security Advanced Logic Yield</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        background: #ffffff;
+        color: #1d4ed8;
+        padding-top: 120px;
+      }
+
+      header {
+        padding: 25px 60px;
+        background: linear-gradient(90deg, #020617, #07152d);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 40px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-shrink: 0;
+      }
+
+      .logo img {
+        width: 50px;
+        height: 50px;
+      }
+
+      .logo-text h1 {
+        font-size: 2rem;
+      }
+      .logo-text p {
+        font-size: 0.9rem;
+        color: #9ca3af;
+      }
+
+      .menu {
+        display: flex;
+        gap: 35px;
+        list-style: none;
+        flex: 1;
+        justify-content: center;
+      }
+
+      .menu a {
+        text-decoration: none;
+        color: #ffffff;
+        font-weight: 600;
+        transition: 0.3s;
+        font-size: 1rem;
+      }
+
+      .menu a:hover {
+        color: #22d3ee;
+      }
+
+      .contact-btn {
+        display: inline-block;
+        padding: 10px 25px;
+        border: 2px solid #22d3ee;
+        color: #22d3ee;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: 0.3s;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      .contact-btn:hover {
+        background: #22d3ee;
+        color: #020617;
+      }
+
+      .hero {
+        padding: 80px 40px;
+        background: #f9fafb;
+        text-align: center;
+      }
+
+      .hero h2 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        color: #1f2937;
+      }
+
+      .hero p {
+        color: #6b7280;
+        line-height: 1.8;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .back-link {
+        display: inline-block;
+        margin: 30px auto 0;
+        padding: 14px 30px;
+        background: #2563eb;
+        color: white;
+        text-decoration: none;
+        border-radius: 10px;
+        font-weight: bold;
+        transition: 0.3s;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+      }
+
+      .back-link:hover {
+        background: #1d4ed8;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        margin: 0 auto;
+        padding: 60px 40px;
+      }
+
+      .plans {
+        background: #f8fafc;
+        padding: 60px 40px 80px;
+      }
+
+      .plans .section-header {
+        max-width: 860px;
+        margin: 0 auto 40px;
+        text-align: center;
+      }
+
+      .plans .section-header h2 {
+        font-size: 2.8rem;
+        color: #111827;
+        margin-bottom: 12px;
+      }
+
+      .plans .section-header p {
+        color: #475569;
+        line-height: 1.8;
+        font-size: 1.05rem;
+      }
+
+      .plan-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 28px;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+
+      .plan-card {
+        background: white;
+        border-radius: 28px;
+        padding: 34px;
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+        border: 1px solid rgba(15, 23, 42, 0.06);
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        position: relative;
+      }
+
+      .plan-card.popular {
+        border-color: #2563eb;
+      }
+
+      .plan-card .badge {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        background: #2563eb;
+        color: white;
+        padding: 8px 14px;
+        border-radius: 999px;
+        font-size: 0.85rem;
+        letter-spacing: 0.02em;
+        font-weight: 700;
+      }
+
+      .plan-card h3 {
+        font-size: 1.85rem;
+        color: #111827;
+      }
+
+      .price {
+        font-size: 2.7rem;
+        font-weight: 800;
+        color: #1d4ed8;
+        letter-spacing: -0.04em;
+      }
+
+      .price small {
+        display: block;
+        margin-top: 10px;
+        font-size: 0.98rem;
+        color: #6b7280;
+      }
+
+      .features {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 12px;
+        color: #334155;
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+
+      .features li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .features li::before {
+        content: "✓";
+        color: #22c55e;
+        font-weight: 700;
+      }
+
+      .plan-card button {
+        margin-top: auto;
+        padding: 14px 24px;
+        border: none;
+        border-radius: 16px;
+        background: #2563eb;
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
+        transition:
+          transform 0.2s ease,
+          background 0.2s ease,
+          box-shadow 0.2s ease;
+        box-shadow: 0 14px 24px rgba(37, 99, 235, 0.18);
+      }
+
+      .plan-card button:hover {
+        transform: translateY(-2px);
+        background: #1d4ed8;
+        box-shadow: 0 18px 30px rgba(37, 99, 235, 0.22);
+      }
+
+      .plans .plan-card.popular button {
+        background: #1d4ed8;
+      }
+
+      /* IMAGEN */
+      .image-box {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+      }
+
+      .image-box img {
+        width: 100%;
+        max-width: 700px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(37, 99, 235, 0.15);
+      }
+
+      /* TEXTO */
+      .text-box {
+        flex: 1;
+        max-width: 760px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .text-box h1 {
+        font-size: 52px;
+        margin-bottom: 25px;
+        color: #2563eb;
+      }
+
+      .text-box h2 {
+        font-size: 2rem;
+        margin: 30px 0 15px;
+        color: #1f2937;
+      }
+
+      .text-box p {
+        font-size: 19px;
+        line-height: 1.8;
+        color: #4b5563;
+        margin: 0 auto 20px;
+        max-width: 760px;
+      }
+
+      .highlight {
+        color: #2563eb;
+        font-weight: bold;
+      }
+
+      .btn {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 14px 30px;
+        background: #2563eb;
+        color: white;
+        text-decoration: none;
+        border-radius: 10px;
+        font-weight: bold;
+        transition: 0.3s;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+      }
+
+      .btn:hover {
+        background: #1d4ed8;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+      }
+
+      .benefits-list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin: 30px auto 40px;
+        max-width: 980px;
+        list-style: none;
+        padding: 0;
+      }
+
+      .benefits-list li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 22px;
+        background: #f8fbff;
+        border-radius: 12px;
+        border-left: 4px solid #2563eb;
+        font-size: 18px;
+        color: #1f2937;
+        text-align: center;
+        transition: 0.25s;
+        min-height: 90px;
+      }
+
+      .benefits-list li:hover {
+        background: #eef6ff;
+        transform: translateY(-6px);
+        box-shadow: 0 6px 18px rgba(37, 99, 235, 0.12);
+      }
+
+      /* Footer kept */
+      footer {
+        text-align: center;
+        padding: 20px;
+        color: #006aff;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 1000px) {
+        .container {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .plans {
+          padding: 40px 20px 60px;
+        }
+
+        .plan-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          padding: 60px 20px;
+        }
+
+        .text-box h1 {
+          font-size: 40px;
+        }
+
+        .text-box p {
+          font-size: 17px;
+        }
+
+        nav {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .menu {
+          flex-direction: column;
+          gap: 15px;
+        }
+        footer {
+          text-align: center;
+          padding: 40px;
+          color: #0004ff;
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">
+          <img
+            src="C:\Users\Payments way\Documents\SALI\Logo\logo.png"
+            alt="logo"
+          />
+          <div class="logo-text">
+            <h1>SALY</h1>
+            <p>Security Advanced Logic Yield</p>
+          </div>
+        </div>
+
+        <ul class="menu">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="planes.html">Planes</a></li>
+          <li><a href="beneficios.html">Beneficios</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section class="hero">
+      <h2>Protege tu infraestructura empresarial</h2>
+      <p>Automatizamos vulnerabilidades y actualizaciones críticas.</p>
+    </section>
+
+    <section class="plans">
+      <div class="section-header">
+        <h2>Planes pensados para cada tamaño de empresa</h2>
+        <p>
+          Escoge el plan que mejor se adapte a tu infraestructura y recibe
+          monitoreo continuo, automatización de actualizaciones y protección
+          avanzada contra amenazas.
+        </p>
+      </div>
+
+      <div class="plan-grid">
+        <div class="plan-card">
+          <h3>Plan Mensual</h3>
+          <div class="price">$350.000 <small>COP / mes</small></div>
+          <ul class="features">
+            <li>Evaluación de seguridad mensual</li>
+            <li>Soporte técnico prioritario</li>
+            <li>Reportes y alertas en tiempo real</li>
+          </ul>
+          <button onclick="alert('Plan mensual seleccionado')">
+            Contratar ahora
+          </button>
+        </div>
+
+        <div class="plan-card popular">
+          <div class="badge">Más popular</div>
+          <h3>Plan Trimestral</h3>
+          <div class="price">$1.050.000 <small>COP / 3 meses</small></div>
+          <ul class="features">
+            <li>Ahorra 5% frente al plan mensual</li>
+            <li>Gestión de parches y actualizaciones</li>
+            <li>Análisis de riesgos y soporte ampliado</li>
+          </ul>
+          <button onclick="alert('Plan trimestral seleccionado')">
+            Contratar ahora
+          </button>
+        </div>
+
+        <div class="plan-card">
+          <h3>Plan Anual</h3>
+          <div class="price">$3.500.000 <small>COP / año</small></div>
+          <ul class="features">
+            <li>Protección completa durante 12 meses</li>
+            <li>Auditorías periódicas y mejoras continuas</li>
+            <li>Gestor de cuenta dedicado</li>
+          </ul>
+          <button onclick="alert('Plan anual seleccionado')">
+            Contratar ahora
+          </button>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
