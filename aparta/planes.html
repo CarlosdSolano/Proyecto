@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SALY - Security Advanced Logic Yield</title>
 
-    <style>
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=Hr95KWIJaWOpolylGuq2l_WhxbGgFtWpQG-qDUrg27XrqA-VrrlmdosTMbVbOzTsBrKWNjda6CRtq9ky2ik98mkPl-4izZq0gFVpMaYG34YkI3hI0h_m8V_XL7LKKZ6mvrUfq4mZsekthwrM0eFtNmXJZcyRgJQVP8gdqclfGa-wkE2z3qFGviUb9Tk9id4CLWLh3UoowAmLgJM8G1TJafcxhufw2NbTctwZBZxVS2R0tqxaDUJtdDeQBIKRM_WzwR4DmE_2LVXjGwbCDXJkNwluxxJYsf6nhDyGIAk1R-uv9lzNRe1Vq3i4IhJ4jn3R" charset="UTF-8"></script><style>
       * {
         margin: 0;
         padding: 0;
@@ -16,11 +16,11 @@
       body {
         background: #ffffff;
         color: #1d4ed8;
-        padding-top: 120px;
+        padding-top: 90px;
       }
 
       header {
-        padding: 25px 60px;
+        padding: 15px 20px;
         background: linear-gradient(90deg, #020617, #07152d);
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         position: fixed;
@@ -34,7 +34,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 40px;
+        gap: 20px;
       }
 
       .logo {
@@ -169,7 +169,7 @@
 
       .plan-grid {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 28px;
         max-width: 1300px;
         margin: 0 auto;
@@ -340,7 +340,7 @@
 
       .benefits-list {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
         gap: 24px;
         margin: 30px auto 40px;
         max-width: 980px;
@@ -378,6 +378,14 @@
 
       /* RESPONSIVE */
       @media (max-width: 1000px) {
+        body{padding-top:80px;}
+        header{padding:12px 15px;}
+        .logo img{width:40px;height:40px;}
+        .logo-text h1{font-size:1.6rem;}
+        .logo-text p{display:none;}
+        .menu{flex-direction:row;flex-wrap:wrap;justify-content:center;}
+        .plans .section-header h2{font-size:2rem;}
+
         .container {
           flex-direction: column;
           text-align: center;
