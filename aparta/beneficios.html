@@ -1,337 +1,62 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SALY - Security Advanced Logic Yield</title>
-
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: Arial, sans-serif;
-      }
-
-      body {
-        background: #ffffff;
-        color: #1d4ed8;
-        padding-top: 120px;
-      }
-
-      header {
-        padding: 25px 60px;
-        background: linear-gradient(90deg, #020617, #07152d);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
-      }
-
-      nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 40px;
-      }
-
-      .logo {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        flex-shrink: 0;
-      }
-
-      .logo img {
-        width: 50px;
-        height: 50px;
-      }
-
-      .logo-text h1 {
-        font-size: 2rem;
-      }
-      .logo-text p {
-        font-size: 0.9rem;
-        color: #9ca3af;
-      }
-
-      .menu {
-        display: flex;
-        gap: 35px;
-        list-style: none;
-        flex: 1;
-        justify-content: center;
-      }
-
-      .menu a {
-        text-decoration: none;
-        color: #ffffff;
-        font-weight: 600;
-        transition: 0.3s;
-        font-size: 1rem;
-      }
-
-      .menu a:hover {
-        color: #22d3ee;
-      }
-
-      .contact-btn {
-        display: inline-block;
-        padding: 10px 25px;
-        border: 2px solid #22d3ee;
-        color: #22d3ee;
-        text-decoration: none;
-        border-radius: 8px;
-        font-weight: 600;
-        transition: 0.3s;
-        white-space: nowrap;
-        flex-shrink: 0;
-      }
-
-      .contact-btn:hover {
-        background: #22d3ee;
-        color: #020617;
-      }
-
-      .hero {
-        padding: 80px 40px;
-        background: #f9fafb;
-      }
-
-      .hero h1 {
-        font-size: 3rem;
-        margin-bottom: 20px;
-        color: #1f2937;
-      }
-
-      .hero p {
-        color: #6b7280;
-        line-height: 1.8;
-        max-width: 800px;
-      }
-
-      .back-link {
-        display: inline-block;
-        margin: 30px auto 0;
-        padding: 14px 30px;
-        background: #2563eb;
-        color: white;
-        text-decoration: none;
-        border-radius: 10px;
-        font-weight: bold;
-        transition: 0.3s;
-        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
-      }
-
-      .back-link:hover {
-        background: #1d4ed8;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
-      }
-
-      .container {
-        width: 100%;
-        max-width: 1400px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 40px;
-        margin: 0 auto;
-        padding: 60px 40px;
-      }
-
-      /* IMAGEN */
-      .image-box {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-      }
-
-      .image-box img {
-        width: 100%;
-        max-width: 700px;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(37, 99, 235, 0.15);
-      }
-
-      /* TEXTO */
-      .text-box {
-        flex: 1;
-        max-width: 760px;
-        margin: 0 auto;
-        text-align: center;
-      }
-
-      .text-box h1 {
-        font-size: 52px;
-        margin-bottom: 25px;
-        color: #2563eb;
-      }
-
-      .text-box h2 {
-        font-size: 2rem;
-        margin: 30px 0 15px;
-        color: #1f2937;
-      }
-
-      .text-box p {
-        font-size: 19px;
-        line-height: 1.8;
-        color: #4b5563;
-        margin: 0 auto 20px;
-        max-width: 760px;
-      }
-
-      .highlight {
-        color: #2563eb;
-        font-weight: bold;
-      }
-
-      .btn {
-        display: inline-block;
-        margin-top: 15px;
-        padding: 14px 30px;
-        background: #2563eb;
-        color: white;
-        text-decoration: none;
-        border-radius: 10px;
-        font-weight: bold;
-        transition: 0.3s;
-        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
-      }
-
-      .btn:hover {
-        background: #1d4ed8;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
-      }
-
-      .benefits-list {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
-        margin: 30px auto 40px;
-        max-width: 980px;
-        list-style: none;
-        padding: 0;
-      }
-
-      .benefits-list li {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 22px;
-        background: #f8fbff;
-        border-radius: 12px;
-        border-left: 4px solid #2563eb;
-        font-size: 18px;
-        color: #1f2937;
-        text-align: center;
-        transition: 0.25s;
-        min-height: 90px;
-      }
-
-      .benefits-list li:hover {
-        background: #eef6ff;
-        transform: translateY(-6px);
-        box-shadow: 0 6px 18px rgba(37, 99, 235, 0.12);
-      }
-
-      /* Footer kept */
-      footer {
-        text-align: center;
-        padding: 20px;
-        color: #006aff;
-      }
-
-      /* RESPONSIVE */
-      @media (max-width: 1000px) {
-        .container {
-          flex-direction: column;
-          text-align: center;
-        }
-
-        .text-box h1 {
-          font-size: 40px;
-        }
-
-        .text-box p {
-          font-size: 17px;
-        }
-
-        nav {
-          flex-direction: column;
-          gap: 15px;
-        }
-
-        .menu {
-          flex-direction: column;
-          gap: 15px;
-        }
-        footer {
-          text-align: center;
-          padding: 40px;
-          color: #0004ff;
-          font-size: 0.9rem;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <nav>
-        <div class="logo">
-          <img
-            src="https://raw.githubusercontent.com/CarlosdSolano/Proyecto/main/Logo/logo.png"
-            alt="logo"
-          />
-          <div class="logo-text">
-            <h1>SALY</h1>
-            <p>Security Advanced Logic Yield</p>
-          </div>
-        </div>
-
-        <ul class="menu">
-          <li><a href="../index.html">Inicio</a></li>
-          <li><a href="servicios.html">Servicios</a></li>
-          <li><a href="planes.html">Planes</a></li>
-          <li><a href="beneficios.html">Beneficios</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main class="hero">
-      <div class="container">
-        <div class="text-box">
-          <h1>Herramienta de Parchado de Seguridad</h1>
-
-          <p>
-            Protege tu infraestructura de manera automática y eficiente con SALY Endpoint Manager, la solución integral para la gestión de parches de seguridad.
-            Mantén tus sistemas actualizados, seguros y en cumplimiento con una solución centralizada de gestión de parches de seguridad.
-          </p>
-          <h2>¿Qué es una herramienta de parchado de seguridad?</h2>
-          <p>
-            Una herramienta de parchado de seguridad permite identificar, administrar e instalar actualizaciones de seguridad en sistemas operativos, aplicaciones, servidores y dispositivos de forma automatizada.
-            Su objetivo principal es reducir vulnerabilidades y proteger la infraestructura tecnológica frente a amenazas y ataques cibernéticos.
-          </p>
-
-          <p>
-            Optimiza tiempos operativos, reduce vulnerabilidades y centraliza la
-            gestión de endpoints en una solución moderna, rápida y escalable.
-          </p>
-          <h2>Beneficios Principales</h2>
-          <section class="benefits-section">
-            <ul class="benefits-list">
-              <li>🔒 Seguridad Avanzada</li>
-              <li>⚙️ Automatización Inteligente</li>
-              <li>📊 Monitoreo Centralizado</li>
-              <li>🛡️ Cumplimiento Normativo</li>
-              <li>🚀 Optimización Operativa</li>
-              <li>🔄 Continuidad del Negocio</li>
-            </ul>
-          </section>
-        </div>
-      </div>
-  </body>
-</html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SALY - Responsive</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#fff;color:#1f2937;padding-top:80px}
+header{position:fixed;top:0;left:0;width:100%;background:#020617;color:#fff;padding:14px 20px;z-index:999}
+nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px;max-width:1200px;margin:auto}
+.logo{display:flex;align-items:center;gap:10px}.logo img{width:42px}.logo h1{font-size:28px}.logo p{font-size:12px;color:#b8c1d1}
+.menu{display:flex;list-style:none;gap:18px;flex-wrap:wrap}.menu a{color:#fff;text-decoration:none;font-weight:bold}
+.hero{padding:40px 20px;background:linear-gradient(#fff,#f5f9ff)}
+.container{max-width:1100px;margin:auto}
+.text-box{text-align:center}
+.text-box h1{font-size:clamp(2rem,5vw,3.2rem);color:#2563eb;margin-bottom:20px}
+.text-box h2{font-size:clamp(1.5rem,4vw,2rem);margin:25px 0 10px}
+.text-box p{font-size:clamp(1rem,2vw,1.1rem);line-height:1.8;color:#4b5563;margin-bottom:18px}
+.benefits-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;list-style:none;margin-top:25px}
+.benefits-list li{background:#f8fbff;padding:20px;border-left:4px solid #2563eb;border-radius:12px;text-align:center;transition:.3s}
+.benefits-list li:hover{transform:translateY(-4px);box-shadow:0 6px 16px rgba(0,0,0,.1)}
+footer{text-align:center;padding:30px;color:#2563eb}
+@media(max-width:768px){
+body{padding-top:120px}
+nav{flex-direction:column}
+.menu{justify-content:center}
+.logo p{display:none}
+}
+</style>
+</head>
+<body>
+<header><nav>
+<div class="logo">
+<img src="https://raw.githubusercontent.com/CarlosdSolano/Proyecto/main/Logo/logo.png">
+<div><h1>SALY</h1><p>Security Advanced Logic Yield</p></div>
+</div>
+<ul class="menu">
+<li><a href="../index.html">Inicio</a></li>
+<li><a href="servicios.html">Servicios</a></li>
+<li><a href="planes.html">Planes</a></li>
+<li><a href="beneficios.html">Beneficios</a></li>
+</ul>
+</nav></header>
+<main class="hero"><div class="container"><div class="text-box">
+<h1>Herramienta de Parchado de Seguridad</h1>
+<p>Protege tu infraestructura de manera automática y eficiente con SALY Endpoint Manager, la solución integral para la gestión de parches de seguridad.</p>
+<h2>¿Qué es una herramienta de parchado de seguridad?</h2>
+<p>Una herramienta de parchado de seguridad permite identificar, administrar e instalar actualizaciones de seguridad en sistemas operativos, aplicaciones, servidores y dispositivos de forma automatizada.</p>
+<p>Optimiza tiempos operativos, reduce vulnerabilidades y centraliza la gestión de endpoints en una solución moderna.</p>
+<h2>Beneficios Principales</h2>
+<ul class="benefits-list">
+<li>🔒 Seguridad Avanzada</li>
+<li>⚙️ Automatización Inteligente</li>
+<li>📊 Monitoreo Centralizado</li>
+<li>🛡️ Cumplimiento Normativo</li>
+<li>🚀 Optimización Operativa</li>
+<li>🔄 Continuidad del Negocio</li>
+</ul>
+</div></div></main>
+<footer>© SALY - Security Advanced Logic Yield</footer>
+</body></html>
